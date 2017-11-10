@@ -1,0 +1,39 @@
+﻿
+@using Vidly.Models
+@model IEnumerable<Vidly.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+<button class="btn btn-outline-primary" type="button"> Create movie</button>
+
+@if (!Model.Any())
+{
+    <p>We don't have any Movies yet.</p>
+}
+
+
+<table class="table table-bordered table-hover"> <!--Table Table bordered table hoover is bootstarp-->
+    <thead>
+    <tr>
+
+        <th>Movies</th>
+        <th>Genre</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var movies in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(movies.Name, "Details", "Movies", new { Id = movies.Id }, null)</td>
+           <td>@movies.Genre.Name</td>
+        </tr>
+
+    }
+
+
+    </tbody>
+</table>
